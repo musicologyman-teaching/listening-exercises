@@ -2,57 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Berlioz, Symphonie fantastique - IV. Marche au supplice</title>
     <style>
+
+        @import url('https://fonts.googleapis.com/css?family=B612%20Mono');
+
         body {
           background-color: CadetBlue;
           color: White;
         }
-
-        .wrapper {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-auto-rows: minmax(100px, auto);
-            grid-row-gap: 1em;
+        
+        #trackContainer {
+          margin-left: auto;
+          margin-right: auto;
+          
         }
 
-        .wrapped-example {
-            display: grid;
-            grid-template-columns: 50px auto;
-        }
-
-        .wrapped-example p {
-            grid-column-start: 1;
-            grid-column-end: 3;
-        }
-
-        a {
-            text-underline-position: under;
-        }
         #currentTime {
-          font-family: Arial, Helvetica, Sans-Serif;
+          font-family: 'B612 Mono',monospaced;
           font-size: 300px;
           font-weight: bold;
           margin-left: auto;
           margin-right: auto;
           width: 600px;
+          text-align: right;
         }
     </style>
 </head>
 
 <body>
     <div id="content">
-        <div>
+        <div id="trackContainer">
             <audio id="track" controls preload="auto">
-                <source src="./audio/04-iv-marche-au-supplice.mp3" type="audio/mpeg" /> Your browswer does not support the audio element.
+                <source src="./audio/04-iv-marche-au-supplice.mp3" type="audio/mpeg" /> Your browser does not support the audio element.
             </audio>
         </div>
     </div>
 
-    <div id="currentTime">0</div>
+    <div id="currentTime">0:00</div>
 
     <script>
         function formatSeconds(seconds) {
@@ -78,7 +65,7 @@
 
         track.ontimeupdate = function() {
           let seconds = Math.round(track.currentTime);
-          currentTime.innerText = seconds;
+          currentTime.innerText = formatStringAsMinSec(seconds);
         }
         
     </script>
