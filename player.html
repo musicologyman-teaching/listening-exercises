@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Berlioz, Symphonie fantastique - IV. Marche au supplice</title>
+    <style>
+        body {
+          background-color: CadetBlue;
+          color: White;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: minmax(100px, auto);
+            grid-row-gap: 1em;
+        }
+
+        .wrapped-example {
+            display: grid;
+            grid-template-columns: 50px auto;
+        }
+
+        .wrapped-example p {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        a {
+            text-underline-position: under;
+        }
+        #currentTime {
+          font-family: Arial, Helvetica, Sans-Serif;
+          font-size: 300px;
+          font-weight: bold;
+          margin-left: auto;
+          margin-right: auto;
+          width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div>
+            <audio id="track" controls preload="auto">
+                <source src="./audio/04-iv-marche-au-supplice.mp3" type="audio/mpeg" /> Your browswer does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <div id="currentTime">0</div>
+
+    <script>
+        function formatSeconds(seconds) {
+          let modSeconds = seconds % 60;
+            if ( modSeconds < 10 ) {
+              return ":0" + modSeconds;
+            } else {
+              return ":" + modSeconds
+            } 
+        }
+
+        function formatMinutes(seconds) {
+          return ( seconds - (seconds % 60) ) / 60
+        }
+
+        function formatStringAsMinSec(rawTime) {
+          let seconds = Math.round(rawTime);
+            return formatMinutes(seconds) + formatSeconds(seconds);
+        }
+
+        let currentTime = document.getElementById('currentTime');
+        let track = document.getElementById('track');
+
+        track.ontimeupdate = function() {
+          let seconds = Math.round(track.currentTime);
+          currentTime.innerText = seconds;
+        }
+        
+    </script>
+</body>
+
+</html>
