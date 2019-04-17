@@ -5,7 +5,7 @@
     <title>Berlioz, Symphonie fantastique - IV. Marche au supplice</title>
     <style>
 
-        @import url('https://fonts.googleapis.com/css?family=B612%20Mono');
+        @import url('https://fonts.googleapis.com/css?family=B612');
 
         body {
           background-color: CadetBlue;
@@ -19,7 +19,7 @@
         }
 
         #currentTime {
-          font-family: 'B612 Mono',monospaced;
+          font-family: 'B612', Sans-Serif;
           font-size: 300px;
           font-weight: bold;
           margin-left: auto;
@@ -44,11 +44,11 @@
     <script>
         function formatSeconds(seconds) {
           let modSeconds = seconds % 60;
-            if ( modSeconds < 10 ) {
-              return ":0" + modSeconds;
-            } else {
-              return ":" + modSeconds
-            } 
+          if ( modSeconds < 10 ) {
+            return ":0" + modSeconds;
+          } else {
+            return ":" + modSeconds
+          } 
         }
 
         function formatMinutes(seconds) {
@@ -58,6 +58,10 @@
         function formatStringAsMinSec(rawTime) {
           let seconds = Math.round(rawTime);
             return formatMinutes(seconds) + formatSeconds(seconds);
+        }
+
+        function manualSpacing(timeString) {
+           
         }
 
         let currentTime = document.getElementById('currentTime');
