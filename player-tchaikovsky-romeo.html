@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Tchaikovsky, Romeo and Juliet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=B612');
+
+    body {
+      background-color: CadetBlue;
+      color: White;
+    }
+
+    #trackContainer {
+      margin-left: auto;
+      margin-right: auto;
+      width: 200px;
+    }
+
+    #currentTime {
+      font-family: 'B612', Sans-Serif;
+      font-size: 300px;
+      font-weight: bold;
+      margin-left: auto;
+      margin-right: auto;
+      width: 600px;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <div id="trackContainer">
+      <audio id="track" controls preload="auto">
+        <source src="./audio/tchaikovsky-romeo-and-juliet.mp3" type="audio/mpeg" /> Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <div id="currentTime">0:00</div>
+
+  <ul>
+    <li>Introduction
+      <ul>
+        <li>First time through: Friar Lawrence</li>
+        <li>Second time through: Friar Lawrence</li>
+        <li>Transition</li>
+      </ul>
+    <li>Exposition
+      <ul>
+        <li>P
+        <li>S (love theme)
+      </ul>
+    <li>Development
+      <ul>
+        <li>P
+      </ul>
+    <li>Recap
+      <ul>
+        <li>P
+        <li>S
+      </ul>
+    <li>Coda
+      <ul>
+        <li>P
+        <li>S
+      </ul>
+
+  </ul>
+
+  <script>
+    function formatSeconds(seconds) {
+      let modSeconds = seconds % 60;
+      if (modSeconds < 10) {
+        return ":0" + modSeconds;
+      } else {
+        return ":" + modSeconds
+      }
+    }
+
+    function formatMinutes(seconds) {
+      let minutes = (seconds - (seconds % 60)) / 60
+      if (minutes < 10) {
+        return " " + minutes;
+      } else {
+        return minutes;
+      }
+    }
+
+    function formatStringAsMinSec(rawTime) {
+      let seconds = Math.round(rawTime);
+      return formatMinutes(seconds) + formatSeconds(seconds);
+    }
+
+    let currentTime = document.getElementById('currentTime');
+    let track = document.getElementById('track');
+
+    track.ontimeupdate = function () {
+      let seconds = Math.round(track.currentTime);
+      currentTime.innerText = formatStringAsMinSec(seconds);
+    }
+  </script>
+</body>
+
+</html>

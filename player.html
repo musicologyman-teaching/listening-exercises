@@ -15,7 +15,7 @@
         #trackContainer {
           margin-left: auto;
           margin-right: auto;
-          
+          width: 200px;
         }
 
         #currentTime {
@@ -52,16 +52,17 @@
         }
 
         function formatMinutes(seconds) {
-          return ( seconds - (seconds % 60) ) / 60
+          let minutes = ( seconds - (seconds % 60) ) / 60
+          if (minutes < 10) {
+            return " " + minutes;
+          } else {
+            return minutes;
+          }
         }
 
         function formatStringAsMinSec(rawTime) {
           let seconds = Math.round(rawTime);
             return formatMinutes(seconds) + formatSeconds(seconds);
-        }
-
-        function manualSpacing(timeString) {
-           
         }
 
         let currentTime = document.getElementById('currentTime');
