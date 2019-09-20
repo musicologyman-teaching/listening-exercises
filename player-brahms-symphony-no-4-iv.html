@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Tchaikovsky, Romeo and Juliet</title>
+  <title>Brahms, Symphony No. 4, Fourth Movement</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=B612');
 
@@ -26,6 +26,36 @@
       width: 600px;
       text-align: right;
     }
+
+    #wrapper {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 1px;
+      grid-auto-rows: minmax(30px, auto);
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #000000
+    }
+
+    #wrapper p {
+      color: #000000;
+      background: #ffffff;
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+
+
+    #wrapper p:nth-child(odd) {
+      grid-column: 1/6;
+      padding-left: 5px;
+    }
+
+    #wrapper p:nth-child(even) {
+      grid-column: 6/7;
+      text-align: right;
+      padding-right: 5px;
+    }
   </style>
 </head>
 
@@ -33,41 +63,23 @@
   <div id="content">
     <div id="trackContainer">
       <audio id="track" controls preload="auto">
-        <source src="./audio/tchaikovsky-romeo-and-juliet.mp3" type="audio/mpeg" /> Your browser does not support the audio element.
+        <source src="./audio/brahms-symphony-no-4-fourth-movement.mp3" type="audio/mpeg" /> Your browser does not support the audio element.
       </audio>
     </div>
   </div>
 
   <div id="currentTime">0:00</div>
 
-  <ul>
-    <li>Introduction
-      <ul>
-        <li>Rotation 1</li>
-        <li>Rotation 2</li>
-        <li>Transitional rotation (1/2 rotation)</li>
-      </ul>
-    <li>Exposition
-      <ul>
-        <li>P
-        <li>S (love theme)
-      </ul>
-    <li>Development
-      <ul>
-        <li>P
-      </ul>
-    <li>Recap
-      <ul>
-        <li>P
-        <li>S
-      </ul>
-    <li>Coda
-      <ul>
-        <li>P
-        <li>S
-      </ul>
-
-  </ul>
+<!--
+  <div id="wrapper">
+    <p>Beginning</p>
+    <p>0:00</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+-->
 
   <script>
     function formatSeconds(seconds) {
